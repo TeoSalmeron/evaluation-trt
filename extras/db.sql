@@ -49,3 +49,6 @@ CREATE TABLE application (
     FOREIGN KEY (advertisement_id) REFERENCES advertisement(id),
     FOREIGN KEY (verified_by) REFERENCES consulting(user_id)
 );
+
+INSERT INTO users VALUES("64b43fd47919e4.04829579", "teo.salmeron2601@gmail.com", "$2y$10$XeC4/KUyf4btlk1YxWRxKeqfUGXNZp2jvV6MszazHpFvTw/wHWtcy", TRUE);
+INSERT INTO administrator VALUES("64b43fd47919e4.04829579");
