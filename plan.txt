@@ -1,0 +1,42 @@
+- mon espace
+	- me connecter
+	- créer un compte
+	- me déconnecter
+        - administration
+        - annonces
+        - candidatures
+- nos offres
+
+Bienvenue sur [Nom du site] - Votre plateforme d'emploi dédiée à la restauration et à l'hôtellerie
+
+Vous recherchez un emploi passionnant dans le domaine de la restauration ou de l'hôtellerie ? Ne cherchez plus ! Vous êtes au bon endroit.
+
+Trouvez votre carrière de rêve dans le secteur de la restauration et de l'hôtellerie
+
+Notre plateforme de recrutement est conçue spécifiquement pour les professionnels de la restauration et de l'hôtellerie. Nous mettons en relation les meilleurs talents avec les entreprises renommées du secteur, vous offrant ainsi des opportunités de carrière inégalées.
+
+Pourquoi choisir [Nom du site] ?
+
+    Vaste réseau d'entreprises partenaires - Nous avons établi des partenariats solides avec des restaurants, des hôtels, des cafés et d'autres établissements prestigieux dans toute la région. Vous aurez accès à une multitude d'offres d'emploi exclusives.
+
+    Offres d'emploi actualisées en temps réel - Notre équipe s'efforce de maintenir notre base de données d'emplois à jour en permanence. Vous serez toujours informé des dernières opportunités professionnelles dans votre domaine.
+
+    Facilité d'utilisation - Notre interface conviviale vous permet de naviguer facilement à travers les offres d'emploi, de filtrer les résultats selon vos critères spécifiques et de postuler rapidement et efficacement.
+
+    Confidentialité et sécurité - Nous prenons la confidentialité de vos informations personnelles très au sérieux. Vos données sont sécurisées et ne seront partagées qu'avec les employeurs que vous choisissez.
+
+Comment ça marche ?
+
+    Créez votre profil - Commencez par créer votre compte sur [Nom du site] et complétez votre profil avec votre expérience, vos compétences et vos préférences professionnelles.
+
+    Explorez les offres d'emploi - Parcourez notre large éventail d'offres d'emploi spécifiquement dans le secteur de la restauration et de l'hôtellerie. Utilisez les filtres pour affiner votre recherche en fonction de votre localisation, de votre niveau d'expérience et d'autres critères pertinents.
+
+    Postulez en un clic - Lorsque vous trouvez une offre qui correspond à vos aspirations professionnelles, postulez directement depuis notre plateforme. Vous pouvez également sauvegarder les offres qui vous intéressent pour y revenir ultérieurement.
+Si votre candidature est retenue, les employeurs vous contacteront directement via notre système de messagerie sécurisé. Vous pourrez ainsi discuter des détails du poste, organiser des entretiens et avancer dans votre processus de recrutement.
+    Connectez-vous avec les employeurs - 
+
+Rejoignez dès maintenant [Nom du site] et donnez un nouvel élan à votre carrière dans la restauration et l'hôtellerie !
+
+Inscrivez-vous dès aujourd'hui et commencez votre recherche d'emploi dès maintenant. Notre équipe est là pour vous soutenir tout au long de votre parcours professionnel. Rejoignez notre communauté passionnée de professionnels de la restauration et de l'hôtellerie.
+
+[CTA button] "Inscrivez-vous maintenant"

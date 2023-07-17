@@ -5,4 +5,198 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main_navigation_bar {
+  height: 80px;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5vw;
+  box-shadow: 0px -3px 4px 5px rgba(0, 0, 0, 0.16);
+}
+.main_navigation_bar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main_navigation_bar .logo a img {
+  position: relative;
+  top: 2px;
+  width: 65px;
+}
+.main_navigation_bar .toggle_menu {
+  width: 53px;
+  height: 53px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 8px;
+  border: none;
+  background: #fff;
+  border: 2px solid #43c8d9;
+}
+.main_navigation_bar .toggle_menu:hover {
+  cursor: pointer;
+}
+.main_navigation_bar .toggle_menu span {
+  height: 3px;
+  border-radius: 5px;
+  width: 80%;
+  background: #43c8d9;
+}
+
+.home__header {
+  padding: 0px 8vw;
+  width: 100%;
+  height: 625px;
+  background-image: url("../img/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.home__header h1 {
+  color: #fff;
+  font-family: "Mulish", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  max-width: 785px;
+}
+.home__header p {
+  color: #fff;
+  font-family: "Mulish", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.home__main {
+  padding: 40px 8vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.home__main p, .home__main h2, .home__main ol {
+  max-width: 850px;
+}
+.home__main p {
+  font-family: "Martel", serif;
+  text-align: justify;
+  margin: 20px 0px;
+  color: #46423f;
+}
+.home__main h2 {
+  margin: 20px 0px;
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+}
+.home__main ol li {
+  font-family: "Martel", serif;
+  text-align: justify;
+  margin: 20px 0px;
+  color: #46423f;
+}
+.home__main ol li b {
+  color: rgb(45, 171, 188);
+}
+
+.home__first_section {
+  padding: 40px 8vw;
+  width: 100%;
+  height: auto;
+  background: rgb(45, 171, 188);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.home__first_section h2 {
+  margin: 20px 0px;
+  color: #fff;
+  font-family: "Mulish", sans-serif;
+  text-align: center;
+}
+.home__first_section ol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px 0px;
+  width: 100%;
+}
+.home__first_section ol li {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  max-width: 380px;
+  padding: 35px;
+  background: #fff;
+}
+.home__first_section ol li h3 {
+  margin: 20px 0px;
+  color: rgb(45, 171, 188);
+  font-family: "Fire Sans", sans-serif;
+  text-align: center;
+}
+.home__first_section ol li p {
+  font-family: "Mulish", sans-serif;
+  color: #817f7e;
+  text-align: justify;
+}
+
+.home__second_section {
+  width: 100%;
+  height: auto;
+  padding: 40px 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.home__second_section p, .home__second_section h2, .home__second_section a {
+  margin: 20px 0px;
+  max-width: 850px;
+}
+.home__second_section h2 {
+  color: rgb(45, 171, 188);
+  font-family: "Mulish", sans-serif;
+}
+.home__second_section p {
+  font-family: "Martel", serif;
+  color: #46423f;
+  text-align: justify;
+}
+.home__second_section a {
+  font-family: "Mulish", sans-serif;
+  color: #fff;
+  background: rgb(45, 171, 188);
+  border: 3px solid rgb(45, 171, 188);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.home__second_section a:hover {
+  background: #fff;
+  color: rgb(45, 171, 188);
 }/*# sourceMappingURL=style.css.map */

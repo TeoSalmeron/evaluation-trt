@@ -10,6 +10,6 @@ class DefaultController extends Controller
     {
         $this->render("home", [
             "title" => "TRT - Emploi restauration et hôtellerie"
-        ], ["home"]);
+        ], ["nav"]);
     }
 }
