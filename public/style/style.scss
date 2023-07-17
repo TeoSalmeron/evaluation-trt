@@ -7,7 +7,7 @@ $font2: 'Martel', serif;
 $font3: 'Mulish', sans-serif;
 
 $color1: #46423f;
-$color2: #817f7e;
+$color2: #b9b9b9;
 $color3: #E1DCE0;
 $color4: rgb(45, 171, 188);
 $color5: #CEAD6D;
@@ -58,7 +58,7 @@ $color5: #CEAD6D;
 
     }
 
-    .toggle_menu {
+    .toggle_nav {
         width: 53px;
         height: 53px;
         border-radius: 50px;
@@ -80,6 +80,68 @@ $color5: #CEAD6D;
             border-radius: 5px;
             width: 80%;
             background: #43c8d9;
+        }
+    }
+
+    .nav_list {
+        -webkit-box-shadow: -1px 0px 2px 3px rgba(0,0,0,0.13); 
+        box-shadow: -1px 0px 2px 3px rgba(0,0,0,0.13);
+        max-width: 500px;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: 100;
+        top: 0;
+        left: -100vw;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 100px 20px;
+        transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+        
+        .close_nav {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: unset;
+            border: none;
+
+            img {
+                width: 110%;
+            }
+            
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .list_item {
+            margin: 15px 0px;
+
+            .item_link {
+                margin: 10px 0px;
+                font-size: 1.4rem;
+                font-family: $font3;
+                color: $color4;
+                background: unset;
+                border: none;
+            }
+
+            .item_sub_nav {
+                border-left: 1px solid $color2;
+                height: auto;
+                display: none;
+                flex-direction: column;
+                padding: 10px 0px 10px 20px;
+                li {
+                    margin: 10px 0px;
+                    a {
+                        font-size: 1rem;
+                        font-family: $font3;
+                        color: $color4;
+                    }
+                }
+            }
         }
     }
 }
@@ -196,7 +258,7 @@ $color5: #CEAD6D;
 
             p {
                 font-family: $font3;
-                color: $color2;
+                color: $color1;
                 text-align: justify;
             }
 
