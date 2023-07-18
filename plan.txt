@@ -1,42 +1,151 @@
-- mon espace
-	- me connecter
-	- créer un compte
-	- me déconnecter
-        - administration
-        - annonces
-        - candidatures
-- nos offres
+    /**
+     * Request function, search datas into Database and return response
+     *
+     * @param string $sql
+     * @param array|null $attributes
+     */
+    public function request(string $sql, array $attributes = null)
+    {
+        // Get database instance
+        $this->db = Db::getInstance();
 
-Bienvenue sur [Nom du site] - Votre plateforme d'emploi dédiée à la restauration et à l'hôtellerie
+        if ($attributes !== null) {
+            // Prepared request
+            $query = $this->db->prepare($sql);
+            $query->execute($attributes);
+            return $query;
+        } else {
+            // Simple request
+            return $this->db->query($sql);
+        }
+    }
 
-Vous recherchez un emploi passionnant dans le domaine de la restauration ou de l'hôtellerie ? Ne cherchez plus ! Vous êtes au bon endroit.
+    /**
+     * Return element of this table with specific attributes (ex: ["id" => 1, "creation_date" => "2023-01-21"]);
+     *
+     * @param array $attributes
+     */
+    public function findBy(array $attributes)
+    {
+        $keys = [];
+        $values = [];
 
-Trouvez votre carrière de rêve dans le secteur de la restauration et de l'hôtellerie
+        // Loop to explode array
+        foreach ($attributes as $key => $value) {
+            // Select * FROM X WHERE $key = ? AND $key = ?
+            $keys[] = "$key = ?";
+            $values[] = $value;
+        }
 
-Notre plateforme de recrutement est conçue spécifiquement pour les professionnels de la restauration et de l'hôtellerie. Nous mettons en relation les meilleurs talents avec les entreprises renommées du secteur, vous offrant ainsi des opportunités de carrière inégalées.
+        // Turn $keys array into a string
+        $list_of_keys = implode(' AND ', $keys);
 
-Pourquoi choisir [Nom du site] ?
+        // Execute request
+        return $this->request('SELECT * FROM ' . $this->table . ' WHERE ' . $list_of_keys, $values)->fetchAll();
+    }
 
-    Vaste réseau d'entreprises partenaires - Nous avons établi des partenariats solides avec des restaurants, des hôtels, des cafés et d'autres établissements prestigieux dans toute la région. Vous aurez accès à une multitude d'offres d'emploi exclusives.
+    /**
+     * Return all elements from a table
+     */
+    public function findAll()
+    {
+        $query = $this->request('SELECT * FROM ' . $this->table);
+        return $query->fetchAll();
+    }
 
-    Offres d'emploi actualisées en temps réel - Notre équipe s'efforce de maintenir notre base de données d'emplois à jour en permanence. Vous serez toujours informé des dernières opportunités professionnelles dans votre domaine.
+    /**
+     * Return a specific element from a table using ID
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function find(int $id)
+    {
+        return $this->request("SELECT * FROM $this->table WHERE id = $id")->fetch();
+    }
 
-    Facilité d'utilisation - Notre interface conviviale vous permet de naviguer facilement à travers les offres d'emploi, de filtrer les résultats selon vos critères spécifiques et de postuler rapidement et efficacement.
+    /**
+     * Delete specific element from a table using ID
+     *
+     * @param integer $id
+     */
+    public function delete(int $id)
+    {
+        return $this->request("DELETE FROM $this->table WHERE id = ?", [$id]);
+    }
 
-    Confidentialité et sécurité - Nous prenons la confidentialité de vos informations personnelles très au sérieux. Vos données sont sécurisées et ne seront partagées qu'avec les employeurs que vous choisissez.
 
-Comment ça marche ?
+    /**
+     * Create a new element into $this->table
+     */
+    public function create()
+    {
+        $keys = [];
+        $inter = [];
+        $values = [];
 
-    Créez votre profil - Commencez par créer votre compte sur [Nom du site] et complétez votre profil avec votre expérience, vos compétences et vos préférences professionnelles.
+        // Loop to explode array
+        foreach ($this as $key => $value) {
+            // INSERT INTO X (x,x,x...) VALUES (?, ?, ?...)
+            if ($value != null && $key != 'db' && $key != 'table') {
+                $keys[] = $key;
+                $inter[] = "?";
+                $values[] = $value;
+            }
+        }
 
-    Explorez les offres d'emploi - Parcourez notre large éventail d'offres d'emploi spécifiquement dans le secteur de la restauration et de l'hôtellerie. Utilisez les filtres pour affiner votre recherche en fonction de votre localisation, de votre niveau d'expérience et d'autres critères pertinents.
+        // Turn arrays into string
+        $list_of_keys = implode(', ', $keys);
+        $list_of_inter = implode(', ', $inter);
 
-    Postulez en un clic - Lorsque vous trouvez une offre qui correspond à vos aspirations professionnelles, postulez directement depuis notre plateforme. Vous pouvez également sauvegarder les offres qui vous intéressent pour y revenir ultérieurement.
-Si votre candidature est retenue, les employeurs vous contacteront directement via notre système de messagerie sécurisé. Vous pourrez ainsi discuter des détails du poste, organiser des entretiens et avancer dans votre processus de recrutement.
-    Connectez-vous avec les employeurs - 
+        // Execute request
+        return $this->request('INSERT INTO ' . $this->table . '(' . $list_of_keys . ')VALUES(' . $list_of_inter . ')', $values);
+    }
 
-Rejoignez dès maintenant [Nom du site] et donnez un nouvel élan à votre carrière dans la restauration et l'hôtellerie !
+    /**
+     * Update element from a table using ID
+     */
+    public function update($id)
+    {
+        $keys = [];
+        $values = [];
 
-Inscrivez-vous dès aujourd'hui et commencez votre recherche d'emploi dès maintenant. Notre équipe est là pour vous soutenir tout au long de votre parcours professionnel. Rejoignez notre communauté passionnée de professionnels de la restauration et de l'hôtellerie.
+        // Loop to explode array
+        foreach ($this as $key => $value) {
+            // UPDATE X SET x = ?... WHERE id = ?
+            if ($value != null && $key != 'db' && $key != 'table') {
+                $keys[] = "$key = ?";
+                $values[] = $value;
+            }
+        }
 
-[CTA button] "Inscrivez-vous maintenant"
+        // Set ID at the end of $values
+        $values[] = $id;
+
+        // Turn $keys into a string
+        $list_of_keys = implode(', ', $keys);
+
+        // Execute request
+        return $this->request("UPDATE $this->table SET " . $list_of_keys . " WHERE id = ?", $values);
+    }
+
+    /**
+     * Set datas into Model instance
+     *
+     * @param $datas
+     */
+    public function hydrate($datas)
+    {
+        foreach ($datas as $key => $value) {
+            // Get setter's name corresponding to the key
+            // exemple : title -> setTitle
+            $setter = 'set' . ucfirst($key);
+
+            // Check if setter exists
+            if (method_exists($this, $setter)) {
+                // Call setter
+                $this->$setter($value);
+            }
+        }
+        return $this;
+    }

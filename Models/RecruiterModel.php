@@ -7,6 +7,7 @@ use App\Models\Model;
 class RecruiterModel extends Model 
 {
     private string $company_name;
+    private string $address;
 
     public function __construct()
     {
@@ -29,6 +30,26 @@ class RecruiterModel extends Model
     public function setCompany_name($company_name)
     {
         $this->company_name = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of address
+     */ 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set the value of address
+     *
+     * @return  self
+     */ 
+    public function setAddress($address)
+    {
+        $this->address = $address;
 
         return $this;
     }

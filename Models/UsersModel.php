@@ -6,17 +6,15 @@ use App\Models\Model;
 
 class UsersModel extends Model {
 
-    private int $id;
+    private string $id;
     private string $email;
     private string $password;
     private bool $verified;
 
     public function __construct()
     {
-        $this->table = "user";
+        $this->table = "users";
     }
-
-
 
     /**
      * Get the value of id

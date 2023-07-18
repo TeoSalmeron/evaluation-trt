@@ -154,7 +154,7 @@
   font-family: "Martel", serif;
   text-align: justify;
   margin: 20px 0px;
-  color: #46423f;
+  color: #45413e;
 }
 .home__main h2 {
   margin: 20px 0px;
@@ -165,7 +165,7 @@
   font-family: "Martel", serif;
   text-align: justify;
   margin: 20px 0px;
-  color: #46423f;
+  color: #45413e;
 }
 .home__main ol li b {
   color: rgb(45, 171, 188);
@@ -213,7 +213,7 @@
 }
 .home__first_section ol li p {
   font-family: "Mulish", sans-serif;
-  color: #46423f;
+  color: #45413e;
   text-align: justify;
 }
 
@@ -236,7 +236,7 @@
 }
 .home__second_section p {
   font-family: "Martel", serif;
-  color: #46423f;
+  color: #45413e;
   text-align: justify;
 }
 .home__second_section a {
@@ -253,4 +253,132 @@
 .home__second_section a:hover {
   background: #fff;
   color: rgb(45, 171, 188);
+}
+
+.inscription__main {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+  padding: 120px 8vw 40px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.inscription__main h1, .inscription__main p, .inscription__main h2, .inscription__main form {
+  max-width: 850px;
+}
+.inscription__main h1 {
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.inscription__main p {
+  margin: 20px 0px;
+  font-family: "Martel", serif;
+  color: #45413e;
+  text-align: justify;
+}
+.inscription__main h2 {
+  color: rgb(45, 171, 188);
+  font-family: "Mulish", sans-serif;
+  margin: 20px 0px;
+  text-align: center;
+}
+.inscription__main #defineRoleForm {
+  width: 100%;
+  padding: 20px 0px 0px;
+}
+.inscription__main #defineRoleForm .form__item .item__label {
+  font-family: "Mulish", sans-serif;
+  margin-right: 10px;
+  color: #45413e;
+  font-size: 1.2rem;
+}
+.inscription__main #defineRoleForm .form__item .item__select {
+  border: none;
+  padding: 10px;
+  background-color: rgb(45, 171, 188);
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.inscription__main #recruiterSignUpForm, .inscription__main #candidateSignUpForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+}
+.inscription__main #recruiterSignUpForm .form_status, .inscription__main #candidateSignUpForm .form_status {
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+.inscription__main #recruiterSignUpForm input, .inscription__main #candidateSignUpForm input {
+  font-family: "Mulish", sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 1px solid #b9b9b9;
+  margin: 20px 0px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  color: #45413e;
+  width: 100%;
+}
+.inscription__main #recruiterSignUpForm input:focus, .inscription__main #candidateSignUpForm input:focus {
+  padding: 5px;
+  outline: #b9b9b9;
+  color: rgb(45, 171, 188);
+  border-bottom: 1px solid rgb(45, 171, 188);
+}
+.inscription__main #recruiterSignUpForm small, .inscription__main #candidateSignUpForm small {
+  font-family: "Mulish", sans-serif;
+  color: #45413e;
+  margin: 20px 0px;
+  text-align: justify;
+  align-self: flex-start;
+}
+.inscription__main #recruiterSignUpForm label, .inscription__main #candidateSignUpForm label {
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+  align-self: flex-start;
+  font-size: 1.2rem;
+  margin: 20px 0px;
+}
+.inscription__main #recruiterSignUpForm input[type=file], .inscription__main #candidateSignUpForm input[type=file] {
+  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+}
+.inscription__main #recruiterSignUpForm input::file-selector-button, .inscription__main #candidateSignUpForm input::file-selector-button {
+  border: none;
+  background-color: rgb(45, 171, 188);
+  font-weight: bold;
+  color: #fff;
+  padding: 10px 5px;
+}
+.inscription__main #recruiterSignUpForm input::file-selector-button:hover, .inscription__main #candidateSignUpForm input::file-selector-button:hover {
+  cursor: pointer;
+}
+.inscription__main #recruiterSignUpForm button, .inscription__main #candidateSignUpForm button {
+  margin: 20px 0px;
+  width: 150px;
+  height: 40px;
+  font-family: "Mulish", sans-serif;
+  color: #fff;
+  background: rgb(45, 171, 188);
+  border: 3px solid rgb(45, 171, 188);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.inscription__main #recruiterSignUpForm button:hover, .inscription__main #candidateSignUpForm button:hover {
+  cursor: pointer;
+  background: #fff;
+  color: rgb(45, 171, 188);
+}
+.inscription__main #recruiterSignUpForm {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

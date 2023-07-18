@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Martel:wght@200;300;400;600;700;800;900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
 
-// Variables
+// VARIABLES
 
 $font1: 'Fire Sans', sans-serif;
 $font2: 'Martel', serif;
 $font3: 'Mulish', sans-serif;
 
-$color1: #46423f;
+$color1: #45413e;
 $color2: #b9b9b9;
 $color3: #E1DCE0;
 $color4: rgb(45, 171, 188);
@@ -28,7 +28,9 @@ $color5: #CEAD6D;
     display: flex;
     flex-direction: column;
 }
+// END GLOBAL CONTAINER
 
+// MAIN NAVIGATION BAR
 .main_navigation_bar {
     height: 80px;
     width: 100%;
@@ -145,7 +147,9 @@ $color5: #CEAD6D;
         }
     }
 }
+// END MAIN NAVIGATION BAR
 
+// HOME PAGE
 .home__header {
     padding: 0px 8vw;
     width: 100%;
@@ -174,7 +178,6 @@ $color5: #CEAD6D;
         text-align: center;
     }
 }
-
 .home__main {
     padding: 40px 8vw;
     text-align: center;
@@ -212,7 +215,6 @@ $color5: #CEAD6D;
     }
 
 }
-
 .home__first_section {
     padding: 40px 8vw;
     width: 100%;
@@ -265,7 +267,6 @@ $color5: #CEAD6D;
         }
     }
 }
-
 .home__second_section {
     width: 100%;
     height: auto;
@@ -308,3 +309,156 @@ $color5: #CEAD6D;
         }
     }
 }
+// END HOME PAGE
+
+// SIGN UP PAGE
+.inscription__main {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100vh;
+    padding: 120px 8vw 40px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    h1, p, h2, form {
+        max-width: 850px;
+    }
+
+    h1 {
+        font-family: $font3;
+        color: $color4;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    p {
+        margin: 20px 0px;
+        font-family: $font2;
+        color: $color1;
+        text-align: justify;
+    }
+
+    h2 {
+        color: $color4;
+        font-family: $font3;
+        margin: 20px 0px;
+        text-align: center;
+    }
+
+    #defineRoleForm {
+        width: 100%;
+        padding: 20px 0px 0px;
+
+        .form__item {
+            .item__label {
+                font-family: $font3;
+                margin-right: 10px;
+                color: $color1;
+                font-size: 1.2rem;
+            }
+
+            .item__select {
+                border: none;
+                padding: 10px;
+                background-color: $color4;
+                text-transform: uppercase;
+                color: #fff;
+                font-family: $font3;
+                font-weight: bold;
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    #recruiterSignUpForm, #candidateSignUpForm {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 450px;
+
+        .form_status {
+            font-family: $font3;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        input {
+            font-family: $font3;
+            // text-transform: uppercase;
+            font-size: 1.2rem;
+            border: none;
+            border-bottom: 1px solid $color2;
+            margin: 20px 0px;
+            transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+            color: $color1;
+            width: 100%;
+
+            &:focus {
+                padding: 5px;
+                outline: $color2;
+                color: $color4;
+                border-bottom: 1px solid $color4;
+            }
+        }
+
+        small {
+            font-family: $font3;
+            color: $color1;
+            margin: 20px 0px;
+            text-align: justify;
+            align-self: flex-start;
+        }
+
+        label {
+            font-family: $font3;
+            color: $color4;
+            align-self: flex-start;
+            font-size: 1.2rem;
+            margin: 20px 0px;
+        }
+
+        input[type="file"] {
+            font-size: 0.9rem;
+            font-family: $font3;
+        }
+
+        input::file-selector-button {
+            border: none;
+            background-color: $color4;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px 5px;
+
+            &:hover {
+                cursor:pointer;
+            }
+        }
+        
+        button {
+            margin: 20px 0px;
+            width: 150px;
+            height: 40px;
+            font-family: $font3;
+            color: #fff;
+            background: $color4;
+            border: 3px solid $color4;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+            
+            &:hover {
+                cursor: pointer;
+                background: #fff;
+                color: $color4;
+            }
+        }
+    }
+
+    #recruiterSignUpForm {
+        display: none;
+    }
+}
+// END SIGN UP PAGE

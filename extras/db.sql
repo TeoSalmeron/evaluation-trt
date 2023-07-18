@@ -1,13 +1,14 @@
 CREATE TABLE users (
     id VARCHAR(23) NOT NULL PRIMARY KEY,
-    email VARCHAR(100) NOT NULL,
-    password VARCHAR(150) NOT NULL,
-    verified BOOL NOT NULL DEFAULT 0
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    verified INT NOT NULL
 );
 
 CREATE TABLE recruiter (
     user_id VARCHAR(23) NOT NULL PRIMARY KEY,
     company_name VARCHAR(100) NOT NULL,
+    address VARCHAR(100) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
