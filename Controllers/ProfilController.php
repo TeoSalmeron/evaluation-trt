@@ -63,6 +63,8 @@ class ProfilController extends Controller
             $this->render("consultant/consultant",
             [
                 "title" => "TRT - Panneau des consultants"
+            ], [
+                "nav"
             ]);
         }
     }
@@ -77,6 +79,8 @@ class ProfilController extends Controller
             $this->render("employeur/employeur",
             [
                 "title" => "TRT - Mon profil"
+            ],[
+                "nav"
             ]);
         }
     }
@@ -91,6 +95,8 @@ class ProfilController extends Controller
             $this->render("candidat/candidat",
             [
                 "title" => "TRT - Mon profil"
+            ],[
+                "nav"
             ]);
         }
     }

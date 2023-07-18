@@ -2,166 +2,171 @@
 
 use App\Models\UsersModel;
 use App\Models\CandidateModel;
+use App\Core\Form;
 
 function candidate_sign_up() {
-    // Check if email exists
-    if(!isset($_POST["email"]) || empty($_POST["email"]) || $_POST["email"] == "") {
+    $form = new Form;
+    // Check e-mail
+    if(!$form->verifyEmail($_POST["email"])) {
         $response = [
             "error" => 1,
-            "msg" => "Veuillez renseigner l'e-mail"
+            "msg" => "L'e-mail est invalide ou inexistant"
         ];
         return $response;
     } else {
-        // Check if e-mail is correct
-        if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        // Check if password exists
+        if(!$form->issetFormItem($_POST["password"]) || !$form->issetFormItem($_POST["confirm_password"])) {
             $response = [
                 "error" => 1,
-                "msg" => "Format de l'e-mail incorrect"
+                "msg" => "Mots de passe manquant"
             ];
             return $response;
         } else {
-            // Check if passwords are set
-            if(!isset($_POST["password"]) || !isset($_POST["confirm_password"]) || empty($_POST["password"]) || empty($_POST["confirm_password"]) || $_POST["password"] == "" || $_POST["confirm_password"] == "") {
+            // Check if passwords respect rules
+            if(!$form->verifyPasswordFormat($_POST["password"]) || !$form->verifyPasswordFormat($_POST["confirm_password"])) {
                 $response = [
                     "error" => 1,
-                    "msg" => "Veuillez insérer les mots de passes"
+                    "msg" => "Les mots de passe doivent respecter les contraintes"
                 ];
                 return $response;
             } else {
-                // Check if passwords are the same
-                if($_POST["password"] !== $_POST["confirm_password"]) {
+                // Check if passwords are similar
+                if(!$form->verifySimilarPasswords($_POST["password"], $_POST["confirm_password"])) {
                     $response = [
                         "error" => 1,
                         "msg" => "Les mots de passe doivent être identiques"
                     ];
                     return $response;
                 } else {
-                    // Check if password respect rules
-                    $uppercase = preg_match('@[A-Z]@', $_POST["password"]);
-                    $lowercase = preg_match('@[a-z]@', $_POST["password"]);
-                    $number = preg_match('@[0-9]@', $_POST["password"]);
-                    $special_chars = preg_match('@[^\w]@', $_POST["password"]);
-
-                    if(!$uppercase || !$lowercase || !$number || !$special_chars || strlen($_POST["password"]) < 8) {
+                    // Search for user in database
+                    $users_model = new UsersModel;
+                    $user = $users_model->findBy(["email" => $_POST["email"]]);
+                    // Check if user exists
+                    if($user) {
                         $response = [
                             "error" => 1,
-                            "msg" => "Le mot de passe doit respecter les contraintes"
+                            "msg" => "Vous avez déjà créé un compte chez nous"
                         ];
                         return $response;
                     } else {
-                        // Check if user exists
-                        $users_model = new UsersModel();
-                        $user = $users_model->findBy(["email" => $_POST["email"]]);
-                        if($user) {
-                            $response = [
-                                "error" => 1,
-                                "msg" => "Vous avez déjà créé un compte chez nous"
-                            ];
-                            return $response;
+                        // Check if user sent a CV
+                        if($_FILES["cv"]["error"] == 4) {
+                            $cv = "";
                         } else {
-                            // Check if cv exists
-                            if($_FILES["cv"]["error"] == 4) {
-                                $cv = "";
+                            // CV has been sent
+                            $content_dir = "../uploads/";
+                            $tmp_file = $_FILES["cv"]["tmp_name"];
+                            // Check if file size is not over 10Mo
+                            if($_FILES["cv"]["size"] > 10000000) {
+                                $response = [
+                                    "error" => 1,
+                                    "msg" => "Le fichier est trop volumineux, il ne doit pas excéder 10Mo"
+                                ];
+                                return $response;
                             } else {
-                                // Check if file size is not over 10Mo
-                                $_SERVER["REQUEST_METHOD"] = "POST";
-                                $content_dir = "../uploads/";
-                                $tmp_file = $_FILES['cv']['tmp_name'];
-                                if($_FILES["cv"]["size"] > 10000000) {
+                                // Check if file extension is PDF
+                                $file_extension = substr($_FILES["cv"]["name"], -4);
+                                if($file_extension !== ".pdf") {
                                     $response = [
                                         "error" => 1,
-                                        "msg" => "Le fichier est trop volumineux"
+                                        "msg" => "Le fichier n'est pas au bon format, il doit être en PDF"
                                     ];
                                     return $response;
                                 } else {
-                                    // Check if file is pdf
-                                    if(!strstr($_FILES["cv"]["type"], "pdf")) {
+                                    // Move file into "uploads" folder with unique name
+                                    $file_name = uniqid("") . ".pdf";
+                                    if(!move_uploaded_file($tmp_file, $content_dir . $file_name)) {
                                         $response = [
                                             "error" => 1,
-                                            "msg" => "Fichier non autorisé, veuillez sélectionner un PDF"
+                                            "msg" => "Impossible d'enregistrer votre CV"
                                         ];
                                         return $response;
                                     } else {
-                                        $name_file = uniqid("") . '.pdf';
-                                        if(!move_uploaded_file($tmp_file, $content_dir.$name_file)) {
-                                            $response = [
-                                                "error" => 1,
-                                                "msg" => "Le fichier n'a pas pu être envoyé"
-                                            ];
-                                            return $response;
-                                        } else {
-                                            $cv = $name_file;
-                                        }
+                                        $cv = $file_name;
                                     }
                                 }
                             }
-                            // Prepare datas
-                            $email = htmlspecialchars(strip_tags(trim($_POST["email"])));
-                            $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
-                            $id = uniqid("", true);
-                            $datas = [
-                                "id" => $id,
-                                "email" => $email,
-                                "password" => $password,
-                                "verified" => "0"
+                        }
+
+                        // Check if user gave last name
+                        if(!$form->issetFormItem($_POST["last_name"])) {
+                            $last_name = "";
+                        } else {
+                            // Check if last name is in right format
+                            if(!$form->verifyName($_POST["last_name"])) {
+                                $response = [
+                                    "error" => 1,
+                                    "msg" => "Le nom de famille est incorrect"
+                                ];
+                                return $response;
+                            } else {
+                                $last_name = strtolower(htmlspecialchars(strip_tags(trim($_POST["last_name"]))));
+                            }
+                        }
+
+                        // Check if user gave first name
+                        if(!$form->issetFormItem($_POST["first_name"])) {
+                            $first_name = "";
+                        } else {
+                            // Check if first name is in right format
+                            if(!$form->verifyName($_POST["first_name"])) {
+                                $response = [
+                                    "error" => 1,
+                                    "msg" => "Le prénom est incorrect"
+                                ];
+                                return $response;
+                            } else {
+                                $first_name = strtolower(htmlspecialchars(strip_tags(trim($_POST["first_name"]))));
+                            }
+                        }
+
+                        // Prepare users data
+                        $email = htmlspecialchars(strip_tags(trim($_POST["email"])));
+                        $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+                        $id = uniqid("", true);
+                        $datas = [
+                            "id" => $id,
+                            "email" => $email,
+                            "password" => $password,
+                            "verified" => "0"
+                        ];
+
+                        // Create new user
+                        if(!$users_model->create($datas)) {
+                            $response = [
+                                "error" => 1,
+                                "msg" => "Impossible de créer le nouvel utilisateur"
                             ];
-                            // Check if first name and last name has been set
-                            $last_name = htmlspecialchars(strip_tags(trim($_POST["last_name"])));
-                            $first_name = htmlspecialchars(strip_tags(trim($_POST["first_name"])));
-                            if(!empty($first_name) || $first_name !== "") {
-                                if(!preg_match("/^[A-Za-z\é\è\ê\-]+$/", $first_name)) {
-                                    $response = [
-                                        "error" => 1,
-                                        "msg" => "Le prénom est incorrect"
-                                    ];
-                                    return $response;
-                                } else {
-                                    if(!empty($last_name) || $last_name !== "") {
-                                        if(!preg_match("/^[A-Za-z\é\è\ê\-]+$/", $last_name)) {
-                                            $response = [
-                                                "error" => 1,
-                                                "msg" => "Le nom de famille est incorrect"
-                                            ];
-                                            return $response;
-                                        } else {
-                                            // Add new user
-                                            if(!$users_model->create($datas)) {
-                                                $response = [
-                                                    "error" => 1,
-                                                    "msg" => "Impossible de créer le nouvel utilisateur"
-                                                ];
-                                                return $response;
-                                            } else {
-                                                // Add new candidate
-                                                $candidate_model = new CandidateModel();
-                                                $datas = [
-                                                    "user_id" => $id,
-                                                    "first_name" => strtolower($first_name),
-                                                    "last_name" => strtolower($last_name),
-                                                    "cv_path" => $cv
-                                                ];
-                                                if(!$candidate_model->create($datas)) {
-                                                    $response = [
-                                                        "error" => 1,
-                                                        "msg" => "Impossible de créer le nouveau candidat"
-                                                    ];
-                                                    return $response;
-                                                } else {
-                                                    $response = [
-                                                        "error" => 0,
-                                                        "msg" => "Création du compte réussie, un consultant doit valider votre profil, vous obtiendrez une réponse par mail dans les plus brefs délais"
-                                                    ];
-                                                    return $response;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                            return $response;
+                        } else {
+                            $candidate_model = new CandidateModel;
+                            // Prepare candidate datas
+                            $datas = [
+                                "user_id" => $id,
+                                "last_name" => $last_name,
+                                "first_name" => $first_name,
+                                "cv_path" => $cv
+                            ];
+                            
+                            // Create new candidate
+                            if(!$candidate_model->create($datas)) {
+                                $response = [
+                                    "error" => 1,
+                                    "msg" => "Impossible de créer le nouveau candidat"
+                                ];
+                                return $response;
+                            } else {
+                                // SUCCESS
+                                $response = [
+                                    "error" => 0,
+                                    "msg" => "Création du compte réussie, un consultant doit valider votre profil, vous obtiendrez une réponse par mail dans les plus brefs délais"
+                                ];
+                                return $response;
                             }
                         }
                     }
                 }
             }
         }
-    }   
+    }
 }

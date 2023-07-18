@@ -19,7 +19,7 @@ function sign_in()
         return $response;
     } else {
         // Check password
-        if(!$form->verifyPassword($_POST["password"])) {
+        if(!$form->issetFormItem($_POST["password"])) {
             $response = [
                 "error" => 1,
                 "msg" => "Insérez votre mot de passe"
@@ -91,7 +91,8 @@ function sign_in()
                         $_SESSION["user_role"] = $user_role;
                         $_SESSION["user_id"] = $id;
                         $response = [
-                            "error" => 0
+                            "error" => 0,
+                            "msg" => ""
                         ];
                         return $response;
                     }

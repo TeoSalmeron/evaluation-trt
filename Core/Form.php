@@ -27,7 +27,7 @@ class Form
     */
     public function verifyName(string $name): bool 
     {
-        if(!preg_match("/^[A-Za-z\é\è\ê\É\È\Ê-]+$/", $name)) {
+        if(!preg_match("/^\p{Latin}+$/u", $name)) {
             return false;
         } else {
             return true;
@@ -38,9 +38,9 @@ class Form
     * Check if password is set
     * @return bool
     */
-    public function verifyPassword(string $password): bool
+    public function issetFormItem($item): bool
     {
-        if(empty($password) || !isset($password) || $password == "") {
+        if(empty($item) || !isset($item) || $item == "" || is_null($item)) {
             return false;
         } else {
             return true;

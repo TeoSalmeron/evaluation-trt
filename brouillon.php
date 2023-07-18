@@ -15,7 +15,7 @@ function recruiter_sign_up() {
         return $response;
     } else {
         // Check company name
-        if(!$form->issetFormItem($_POST["company_name"])) {
+        if(!$form->issetFormItem($_POST["company_item"])) {
             $response = [
                 "error" => 1,
                 "msg" => "Veuillez renseigner le nom de l'entreprise"

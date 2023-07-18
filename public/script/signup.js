@@ -42,6 +42,7 @@ recruiterSignUpForm.addEventListener("submit", (e) => {
     var xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function() {
         if(xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.response)
             let response = xhr.response
             recruiterFormStatus.innerText = response.msg
             window.scrollTo(0, 0)
@@ -50,6 +51,8 @@ recruiterSignUpForm.addEventListener("submit", (e) => {
             } else {
                 recruiterFormStatus.style.color = "green"
             }
+        } else if(xhr.readyState == 4) {
+            console.log("ERREUR")
         }
     }
     xhr.responseType = "json"
