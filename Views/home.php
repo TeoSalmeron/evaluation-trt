@@ -62,7 +62,7 @@ require_once ROOT . '/Views/templates/nav.php'
     </h2>
     <ol>
         <li>
-            <img src="img/add_user.png" alt="créer un compte">
+            <img src="/img/add_user.png" alt="créer un compte">
             <h3>
                 Créez votre compte
             </h3>
@@ -71,7 +71,7 @@ require_once ROOT . '/Views/templates/nav.php'
             </p>
         </li>
         <li>
-            <img src="img/eye.png" alt="recherchez un emploi">
+            <img src="/img/eye.png" alt="recherchez un emploi">
             <h3>
                 Explorez les offres d'emploi
             </h3>
@@ -80,7 +80,7 @@ require_once ROOT . '/Views/templates/nav.php'
             </p>
         </li>
         <li>
-            <img src="img/cv.png" alt="postulez pour un emploi">
+            <img src="/img/cv.png" alt="postulez pour un emploi">
             <h3>
                 Postulez en un clic
             </h3>
@@ -89,7 +89,7 @@ require_once ROOT . '/Views/templates/nav.php'
             </p>
         </li>
         <li>
-            <img src="img/meet.png" alt="rencontrez les employeurs">
+            <img src="/img/meet.png" alt="rencontrez les employeurs">
             <h3>
                 Connectez-vous avec les employeurs
             </h3>

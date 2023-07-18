@@ -23,7 +23,7 @@ abstract class Controller
 
         if (isset($script) && !is_null($script)) {
             foreach ($script as $s) {
-                echo '<script src="script/'.$s.'.js" language="javascript"></script>';
+                echo '<script src="/script/'.$s.'.js" language="javascript"></script>';
             }
         }
 

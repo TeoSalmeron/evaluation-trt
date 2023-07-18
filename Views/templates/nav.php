@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="logo">
         <a href="/">
-            <img src="img/logo.png" alt="malette de travail">
+            <img src="/img/logo.png" alt="malette de travail">
         </a>
     </div>
     <!-- END LOGO -->
@@ -17,7 +17,7 @@
 
     <ul id="navList" class="nav_list">
         <button id="closeNav" class="close_nav">
-            <img src="img/close.png" alt="fermer la barre de navigation">
+            <img src="/img/close.png" alt="fermer la barre de navigation">
         </button>
         <li class="list_item">
             <a href="/" class="item_link">

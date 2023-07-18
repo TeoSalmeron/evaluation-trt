@@ -381,4 +381,72 @@
 }
 .inscription__main #recruiterSignUpForm {
   display: none;
+}
+
+.connexion__main {
+  padding: 120px 8vw 0px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.connexion__main h1 {
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.connexion__main p {
+  margin: 20px 0px;
+  font-family: "Martel", serif;
+  color: #45413e;
+  text-align: justify;
+}
+.connexion__main h2 {
+  color: rgb(45, 171, 188);
+  font-family: "Mulish", sans-serif;
+  margin: 20px 0px;
+  text-align: center;
+}
+.connexion__main form #formStatus {
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+.connexion__main form input {
+  font-family: "Mulish", sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 1px solid #b9b9b9;
+  margin: 20px 0px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  color: #45413e;
+  width: 100%;
+}
+.connexion__main form input:focus {
+  padding: 5px;
+  outline: #b9b9b9;
+  color: rgb(45, 171, 188);
+  border-bottom: 1px solid rgb(45, 171, 188);
+}
+.connexion__main form button {
+  margin: 20px 0px;
+  width: 150px;
+  height: 40px;
+  font-family: "Mulish", sans-serif;
+  color: #fff;
+  background: rgb(45, 171, 188);
+  border: 3px solid rgb(45, 171, 188);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.connexion__main form button:hover {
+  cursor: pointer;
+  background: #fff;
+  color: rgb(45, 171, 188);
 }/*# sourceMappingURL=style.css.map */

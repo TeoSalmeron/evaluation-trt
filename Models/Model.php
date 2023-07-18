@@ -37,6 +37,18 @@ class Model extends Db
     }
 
     /**
+    * Search user with e-mail
+    */
+    public function findUser(string $email)
+    {
+        $this->db = Db::getInstance();
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    /**
      * Create new element in $this table
      */
     public function create(array $datas)
