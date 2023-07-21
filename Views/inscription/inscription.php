@@ -48,6 +48,9 @@ require_once ROOT . '/Views/templates/nav.php';
         <label for="cv">
             Votre CV *
         </label>
+        <small>
+            Le fichier doit être au format PDF et ne pas excéder 10Mo
+        </small>
         <input type="file" name="cv" id="cv" accept="application/pdf">
         <button type="submit">
             Valider

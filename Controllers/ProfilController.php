@@ -48,8 +48,21 @@ class ProfilController extends Controller
             [
                 "title" => "TRT - Panneau d'administration"
             ],[
-                "nav"
+                "nav", "admin"
             ]);
+        }
+    }
+
+    public function ajout_consultant()
+    {
+        if($_SESSION["user_role"] !== "admin") {
+            http_response_code(404);
+            echo "Accès refusé";
+            die();
+        } else {
+            require_once ROOT . '/Controllers/functions/add_consulting.php';
+            $response = add_consulting();
+            echo json_encode($response);
         }
     }
 

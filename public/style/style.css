@@ -449,4 +449,76 @@
   cursor: pointer;
   background: #fff;
   color: rgb(45, 171, 188);
+}
+
+.pannel__admin {
+  padding: 120px 8vw;
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pannel__admin h1, .pannel__admin h2, .pannel__admin hr, .pannel__admin p {
+  margin: 20px 0px;
+}
+.pannel__admin hr {
+  color: #b9b9b9;
+}
+.pannel__admin h2 {
+  text-align: start;
+}
+.pannel__admin form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+}
+.pannel__admin form .form_status {
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+.pannel__admin form input {
+  font-family: "Mulish", sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 1px solid #b9b9b9;
+  margin: 20px 0px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  color: #45413e;
+  width: 100%;
+}
+.pannel__admin form input:focus {
+  padding: 5px;
+  outline: #b9b9b9;
+  color: rgb(45, 171, 188);
+  border-bottom: 1px solid rgb(45, 171, 188);
+}
+.pannel__admin form small {
+  font-family: "Mulish", sans-serif;
+  color: #45413e;
+  margin: 20px 0px;
+  text-align: justify;
+  align-self: flex-start;
+}
+.pannel__admin form button {
+  margin: 20px 0px;
+  width: 150px;
+  height: 40px;
+  font-family: "Mulish", sans-serif;
+  color: #fff;
+  background: rgb(45, 171, 188);
+  border: 3px solid rgb(45, 171, 188);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.pannel__admin form button:hover {
+  cursor: pointer;
+  background: #fff;
+  color: rgb(45, 171, 188);
 }/*# sourceMappingURL=style.css.map */

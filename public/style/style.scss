@@ -543,3 +543,89 @@ $color5: #CEAD6D;
     }
 }
 // END SIGN IN PAGE
+
+// ADMIN
+.pannel__admin {
+    padding: 120px 8vw;
+    font-family: $font3;
+    color: $color4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1, h2, hr, p {
+        margin: 20px 0px;
+    }
+
+    hr {
+        color: $color2;
+    }
+
+    h2 {
+        text-align: start;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 450px;
+
+        .form_status {
+            font-family: $font3;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        input {
+            font-family: $font3;
+            // text-transform: uppercase;
+            font-size: 1.2rem;
+            border: none;
+            border-bottom: 1px solid $color2;
+            margin: 20px 0px;
+            transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+            color: $color1;
+            width: 100%;
+
+            &:focus {
+                padding: 5px;
+                outline: $color2;
+                color: $color4;
+                border-bottom: 1px solid $color4;
+            }
+        }
+
+        small {
+            font-family: $font3;
+            color: $color1;
+            margin: 20px 0px;
+            text-align: justify;
+            align-self: flex-start;
+        }
+
+        button {
+            margin: 20px 0px;
+            width: 150px;
+            height: 40px;
+            font-family: $font3;
+            color: #fff;
+            background: $color4;
+            border: 3px solid $color4;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+            
+            &:hover {
+                cursor: pointer;
+                background: #fff;
+                color: $color4;
+            }
+        }
+    }
+
+}
+// END ADMIN

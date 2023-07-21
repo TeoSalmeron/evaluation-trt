@@ -10,7 +10,7 @@ function candidate_sign_up() {
     if(!$form->verifyEmail($_POST["email"])) {
         $response = [
             "error" => 1,
-            "msg" => "L'e-mail est invalide ou inexistant"
+            "msg" => "E-mail au mauvais format ou manquant"
         ];
         return $response;
     } else {
