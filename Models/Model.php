@@ -118,7 +118,18 @@ class Model extends Db
         $stmt = $this->db->prepare("UPDATE $this->table SET $list_of_keys WHERE id = ?");
         $result = $stmt->execute($values);
         return $result;
-        // return $this->request("UPDATE $this->table SET " . $list_of_keys . " WHERE id = ?", $values);
     }
 
+    /*
+    * Return all unconfirmed users
+    */
+
+    public function returnAllUnconfirmedUsers(string $role)
+    {
+        $this->db = Db::getInstance();
+        $stmt = $this->db->prepare("SELECT * FROM users INNER JOIN $role ON users.id = recruiter.user_id WHERE users.verified = 0");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

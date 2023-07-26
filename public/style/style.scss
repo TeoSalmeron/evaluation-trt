@@ -319,6 +319,7 @@ $color5: #CEAD6D;
     padding: 120px 8vw 40px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: auto;
 
     h1, p, h2, form {
@@ -629,3 +630,116 @@ $color5: #CEAD6D;
 
 }
 // END ADMIN
+
+// CONSULTING
+.pannel__consulting {
+    width: 100%;
+    padding: 90px 8vw;
+    font-family: $font3;
+    color: $color4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1300px;
+    margin: auto;
+
+    h1, h2, p, hr {
+        margin: 20px 0px;
+    }
+
+    hr {
+        width: 100%;
+        color: $color2;
+    }
+
+    p {
+        color: $color1;
+    }
+
+    .consulting__confirm_recruiter {
+        
+        .recruiter__table {
+            text-transform: uppercase;
+            border-collapse: collapse;
+            color: $color4;
+
+            caption {
+                margin: 20px 0px;
+                font-weight: bold;
+                text-align: start;
+            }
+
+            td {
+                button {  
+                    width: 45px;
+                    height: 45px;
+                    border: none;           
+                    transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    &:hover {
+                        scale: 0.9;
+                        cursor: pointer;
+                    }
+                }
+
+                .btn_confirm {
+                    background: url("/img/confirm.png");
+                }
+
+                .btn_delete {
+                    background: url("/img/delete.png");
+                }
+            }
+
+            td, th {
+                padding: 1rem;
+            }
+
+            th {
+                background: $color3;
+            }
+
+            tr:nth-of-type(2n) {
+                background: $color1;
+            }
+        }
+    }
+}
+// END CONSULTING
+
+@media screen and (max-width: 650px) {
+    .recruiter__table {
+
+        th {
+            display: none;
+        }
+
+        td {
+            display: block;
+        }
+
+        td::before {
+            content: attr(data-cell) ": ";
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 20px;
+        }
+
+
+        .table__confirm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            
+            button {
+                width: 40px;
+                margin-right: 20px;
+            }
+            
+            button:nth-child(2) {
+                margin-right: 0px;
+            }
+        }
+    }
+}

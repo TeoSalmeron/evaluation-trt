@@ -262,6 +262,7 @@
   padding: 120px 8vw 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: auto;
 }
 .inscription__main h1, .inscription__main p, .inscription__main h2, .inscription__main form {
@@ -521,4 +522,89 @@
   cursor: pointer;
   background: #fff;
   color: rgb(45, 171, 188);
+}
+
+.pannel__consulting {
+  width: 100%;
+  padding: 90px 8vw;
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+.pannel__consulting h1, .pannel__consulting h2, .pannel__consulting p, .pannel__consulting hr {
+  margin: 20px 0px;
+}
+.pannel__consulting hr {
+  width: 100%;
+  color: #b9b9b9;
+}
+.pannel__consulting p {
+  color: #45413e;
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table {
+  text-transform: uppercase;
+  border-collapse: collapse;
+  color: rgb(45, 171, 188);
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table caption {
+  margin: 20px 0px;
+  font-weight: bold;
+  text-align: start;
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table td button {
+  width: 45px;
+  height: 45px;
+  border: none;
+  transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table td button:hover {
+  scale: 0.9;
+  cursor: pointer;
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table td .btn_confirm {
+  background: url("/img/confirm.png");
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table td .btn_delete {
+  background: url("/img/delete.png");
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table td, .pannel__consulting .consulting__confirm_recruiter .recruiter__table th {
+  padding: 1rem;
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table th {
+  background: #E1DCE0;
+}
+.pannel__consulting .consulting__confirm_recruiter .recruiter__table tr:nth-of-type(2n) {
+  background: #45413e;
+}
+
+@media screen and (max-width: 650px) {
+  .recruiter__table th {
+    display: none;
+  }
+  .recruiter__table td {
+    display: block;
+  }
+  .recruiter__table td::before {
+    content: attr(data-cell) ": ";
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 20px;
+  }
+  .recruiter__table .table__confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .recruiter__table .table__confirm button {
+    width: 40px;
+    margin-right: 20px;
+  }
+  .recruiter__table .table__confirm button:nth-child(2) {
+    margin-right: 0px;
+  }
 }/*# sourceMappingURL=style.css.map */

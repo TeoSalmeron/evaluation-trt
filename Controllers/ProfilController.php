@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UsersModel;
+use App\Models\RecruiterModel;
 use App\Controllers\Controller;
 
 class ProfilController extends Controller
@@ -73,12 +75,28 @@ class ProfilController extends Controller
             echo "Accès refusé";
             die();
         } else {
+            $recruiter_model = new RecruiterModel;
+            $unconfirmed_recruiters = $recruiter_model->returnAllUnconfirmedUsers("recruiter");
             $this->render("consultant/consultant",
             [
-                "title" => "TRT - Panneau des consultants"
+                "title" => "TRT - Panneau des consultants",
+                "unconfirmed_recruiters" => $unconfirmed_recruiters
             ], [
-                "nav"
+                "nav", "consulting"
             ]);
+        }
+    }
+
+    public function consultant_actions() {
+        switch($_POST["action"]) {
+            case "confirm_recruiter":
+                require_once ROOT . '/Controllers/functions/confirm_recruiter.php';
+                echo json_encode(confirm_recruiter($_POST["id"]));
+                break;
+            case "delete_recruiter":
+                require_once ROOT . '/Controllers/functions/delete_recruiter.php';
+                echo json_encode(delete_recruiter($_POST["id"]));
+                break;
         }
     }
 

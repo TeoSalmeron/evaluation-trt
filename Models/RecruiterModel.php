@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Core\Db;
 use App\Models\Model;
 
 class RecruiterModel extends Model 
@@ -53,4 +54,5 @@ class RecruiterModel extends Model
 
         return $this;
     }
+
 }
