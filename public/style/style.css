@@ -20,6 +20,7 @@
   width: 100%;
   background: #fff;
   position: fixed;
+  z-index: 555;
   top: 0;
   display: flex;
   justify-content: space-between;
@@ -525,26 +526,27 @@
 }
 
 .pannel__consulting {
+  min-height: 100vh;
   width: 100%;
-  padding: 90px clamp(15px, 8vw, 100px) 40px;
+  padding: 90px 20px;
   font-family: "Mulish", sans-serif;
   color: rgb(45, 171, 188);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1300px;
-  margin: auto;
-}
-.pannel__consulting h1, .pannel__consulting p {
-  margin: 20px 0px;
+  justify-content: space-evenly;
+  max-width: 800px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 .pannel__consulting p {
   color: #45413e;
 }
 .pannel__consulting .consulting__section {
   width: 100%;
-  margin: 20px 0px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -552,11 +554,13 @@
   text-align: justify;
 }
 .pannel__consulting .consulting__section h2 {
+  font-size: clamp(20px, 4vw, 25px);
   align-self: flex-start;
   text-align: center;
   text-decoration: underline;
+  margin: 20px 0px;
 }
-.pannel__consulting .consulting__section h2, .pannel__consulting .consulting__section p, .pannel__consulting .consulting__section table {
+.pannel__consulting .consulting__section p {
   margin-bottom: 20px;
 }
 .pannel__consulting .consulting__section table {
@@ -592,10 +596,6 @@
 }
 .pannel__consulting .consulting__section table tr:nth-of-type(2n) {
   background: #45413e;
-}
-.pannel__consulting hr {
-  width: 100%;
-  max-width: 787px;
 }
 
 @media screen and (max-width: 650px) {
