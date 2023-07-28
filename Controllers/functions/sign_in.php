@@ -48,19 +48,19 @@ function sign_in()
                     $id = $user["id"];
                     // Check user role
                     $administrator_model = new AdministratorModel();
-                    $admin = $administrator_model->findBy(["user_id" => $id]);
+                    $admin = $administrator_model->findBy(["id" => $id]);
                     if(!$admin) {
                         // Check if user is consulting
                         $consulting_model = new ConsultingModel();
-                        $consulting = $consulting_model->findBy(["user_id" => $id]);
+                        $consulting = $consulting_model->findBy(["id" => $id]);
                         if(!$consulting) {
                             // Check if user is recruiter
                             $recruiter_model = new RecruiterModel();
-                            $recruiter = $recruiter_model->findBy(["user_id" => $id]);
+                            $recruiter = $recruiter_model->findBy(["id" => $id]);
                             if(!$recruiter) {
                                 // Check if user is candidate
                                 $candidate_model = new CandidateModel();
-                                $candidate = $candidate_model->findBy(["user_id" => $id]);
+                                $candidate = $candidate_model->findBy(["id" => $id]);
                                 if(!$candidate) {
                                     $response = [
                                         "error" => 1,
@@ -89,7 +89,7 @@ function sign_in()
                     } else {
                         $_SESSION["is_connected"] = true;
                         $_SESSION["user_role"] = $user_role;
-                        $_SESSION["user_id"] = $id;
+                        $_SESSION["id"] = $id;
                         $response = [
                             "error" => 0,
                             "msg" => ""

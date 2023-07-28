@@ -142,7 +142,7 @@ function candidate_sign_up() {
                             $candidate_model = new CandidateModel;
                             // Prepare candidate datas
                             $datas = [
-                                "user_id" => $id,
+                                "id" => $id,
                                 "last_name" => $last_name,
                                 "first_name" => $first_name,
                                 "cv_path" => $cv

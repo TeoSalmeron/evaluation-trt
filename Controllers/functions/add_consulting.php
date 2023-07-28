@@ -71,7 +71,7 @@ function add_consulting()
                         } else {
                             $consulting_model = new ConsultingModel;
                             $consulting_datas = [
-                                "user_id" => $id
+                                "id" => $id
                             ];
                             if(!$consulting_model->create($consulting_datas)) {
                                 $response = [

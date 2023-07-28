@@ -88,7 +88,7 @@ function recruiter_sign_up() {
                                     // Create recruiter
                                     $recruiter_model = new RecruiterModel;
                                     $recruiter_datas = [
-                                        "user_id" => $id,
+                                        "id" => $id,
                                         "company_name" => $company_name,
                                         "address" => $address
                                     ];

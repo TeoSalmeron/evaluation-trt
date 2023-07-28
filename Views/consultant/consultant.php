@@ -10,8 +10,8 @@ require_once ROOT . '/Views/templates/nav.php';
     <p>
         D'ici, vous pourrez confirmer les nouveaux utilisateurs, confirmer les annonces et les recrutements.
     </p>
-    <hr>
-    <section class="consulting__confirm_recruiter">
+    <!-- RECRUITER SECTION -->
+    <section class="consulting__section">
         <h2>
             Confirmez les nouveaux employeurs
         </h2>
@@ -21,10 +21,7 @@ require_once ROOT . '/Views/templates/nav.php';
         <p id="recruiterFormStatus">
 
         </p>
-        <table class="recruiter__table">
-            <caption>
-                EMPLOYEURS
-            </caption>
+        <table class="recruiter__table"  id="recruiterTable">
             <tr>
                 <th>
                     E-mail
@@ -55,11 +52,11 @@ require_once ROOT . '/Views/templates/nav.php';
                             </td>
                             <td data-cell="Confirmer" class="table__confirm">
                                 <form action="" method="post" class="recruiter_forms" id="<?= $i ?>">
-                                    <input type="checkbox" checked value="<?=$u["user_id"]?>" style="display:none">
+                                    <input type="checkbox" checked value="<?=$u["id"]?>" style="display:none">
                                     <button class="btn_confirm" value="confirm_recruiter"></button>
                                 </form> 
                                 <form action="" method="post" class="recruiter_forms">
-                                    <input type="checkbox" checked value="<?=$u["user_id"]?>" style="display:none">
+                                    <input type="checkbox" checked value="<?=$u["id"]?>" style="display:none">
                                     <button class="btn_delete" value="delete_recruiter"></button>
                                 </form>
                             </td>
@@ -70,6 +67,78 @@ require_once ROOT . '/Views/templates/nav.php';
             ?>
         </table>
     </section>
+    <!-- END RECRUITER SECTION -->
+
+    <!-- CANDIDATE SECTION -->
+    <section class="consulting__section">
+        <h2>
+            Confirmer les nouveaux candidats
+        </h2>
+        <p>
+            Vous retrouverez dans cette section les dernières demandes d'inscription de la part des candidats.
+        </p>
+        <p id="candidateFormStatus">
+
+        </p>
+        <table class="candidate__table"  id="candidateTable">
+            <tr>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Prénom
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Confirmer
+                </th>
+            </tr>
+            <?php
+                $i = 20000;
+                foreach($unconfirmed_candidates as $u) {
+                    ?>
+                        <tr class="<?= $i ?>">
+                            <td data-cell="E-mail">
+                                <?= $u["email"] ?>
+                            </td>
+                            <td data-cell="Prénom">
+                                <?php 
+                                    if(!empty($u["first_name"])) {
+                                        echo $u["first_name"];
+                                    } else {
+                                        echo "X";
+                                    }
+                                ?>
+                            </td>
+                            <td data-cell="Nom">
+                                <?php 
+                                    if(!empty($u["last_name"])) {
+                                        echo $u["last_name"];
+                                    } else {
+                                        echo "X";
+                                    }
+                                ?>
+                            </td>
+                            <td data-cell="Confirmer" class="table__confirm">
+                                <form action="" method="post" class="candidate_forms" id="<?= $i ?>">
+                                    <input type="checkbox" checked value="<?=$u["id"]?>" style="display:none">
+                                    <button class="btn_confirm" value="confirm_candidate"></button>
+                                </form> 
+                                <form action="" method="post" class="candidate_forms">
+                                    <input type="checkbox" checked value="<?=$u["id"]?>" style="display:none">
+                                    <button class="btn_delete" value="delete_candidate"></button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php
+                    $i++;
+                }
+            ?>
+        </table>
+    </section>
+    <!-- END CANDIDATE SECTION -->
     <section class="pannel__confirm_application">
     </section>
     <section class="pannel__confirm_advertisement">

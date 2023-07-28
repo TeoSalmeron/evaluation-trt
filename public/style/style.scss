@@ -10,7 +10,7 @@ $color1: #45413e;
 $color2: #b9b9b9;
 $color3: #E1DCE0;
 $color4: rgb(45, 171, 188);
-$color5: #CEAD6D;
+$color5: #B45171;
 
 * {
     margin: 0;
@@ -644,33 +644,42 @@ $color5: #CEAD6D;
     max-width: 1300px;
     margin: auto;
 
-    h1, h2, p, hr {
+    h1, p {
         margin: 20px 0px;
-    }
-
-    hr {
-        width: 100%;
-        color: $color2;
+        color: $color5;
     }
 
     p {
         color: $color1;
     }
 
-    .consulting__confirm_recruiter {
-        
-        .recruiter__table {
+    .consulting__section {
+        width: 100%;
+        margin: 20px 0px;
+        height: auto;  
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: justify;
+
+        h2 {
+            align-self: flex-start;
+            text-align: center;
+            color: $color5;
+        }
+
+        h2, p, table {
+            margin-bottom: 20px;
+        }
+
+        table {
             text-transform: uppercase;
             border-collapse: collapse;
             color: $color4;
-
-            caption {
-                margin: 20px 0px;
-                font-weight: bold;
-                text-align: start;
-            }
+            width: 100%;
 
             td {
+                
                 button {  
                     width: 45px;
                     height: 45px;
@@ -692,23 +701,34 @@ $color5: #CEAD6D;
             }
 
             td, th {
-                padding: 1rem;
+                padding: 0.5rem;
             }
 
             th {
                 background: $color3;
             }
 
+            tr:nth-of-type(1n) {
+                background: $color3;
+            }
+
             tr:nth-of-type(2n) {
                 background: $color1;
             }
+
         }
+
+    }
+
+    hr {
+        width: 100%;
+        max-width: 787px;
     }
 }
 // END CONSULTING
 
 @media screen and (max-width: 650px) {
-    .recruiter__table {
+    table {
 
         th {
             display: none;
@@ -716,6 +736,8 @@ $color5: #CEAD6D;
 
         td {
             display: block;
+            padding: 20px !important;
+            text-align: start;
         }
 
         td::before {
@@ -729,7 +751,8 @@ $color5: #CEAD6D;
         .table__confirm {
             display: flex;
             align-items: center;
-            justify-content: center;
+            // justify-content: center;
+
 
             
             button {

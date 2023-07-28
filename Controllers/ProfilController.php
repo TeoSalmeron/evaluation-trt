@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\CandidateModel;
 use App\Models\RecruiterModel;
 use App\Controllers\Controller;
 
@@ -76,11 +77,15 @@ class ProfilController extends Controller
             die();
         } else {
             $recruiter_model = new RecruiterModel;
+            $candidate_model = new CandidateModel;
             $unconfirmed_recruiters = $recruiter_model->returnAllUnconfirmedUsers("recruiter");
+            $unconfirmed_candidates = $candidate_model->returnAllUnconfirmedUsers("candidate");
+
             $this->render("consultant/consultant",
             [
                 "title" => "TRT - Panneau des consultants",
-                "unconfirmed_recruiters" => $unconfirmed_recruiters
+                "unconfirmed_recruiters" => $unconfirmed_recruiters,
+                "unconfirmed_candidates" => $unconfirmed_candidates
             ], [
                 "nav", "consulting"
             ]);
@@ -88,14 +93,36 @@ class ProfilController extends Controller
     }
 
     public function consultant_actions() {
+        require_once ROOT . '/Controllers/functions/confirm_user.php';
+        require_once ROOT . '/Controllers/functions/delete_user.php';
+
+
         switch($_POST["action"]) {
             case "confirm_recruiter":
-                require_once ROOT . '/Controllers/functions/confirm_recruiter.php';
-                echo json_encode(confirm_recruiter($_POST["id"]));
+                echo json_encode(confirm_user($_POST["id"]));
                 break;
             case "delete_recruiter":
-                require_once ROOT . '/Controllers/functions/delete_recruiter.php';
-                echo json_encode(delete_recruiter($_POST["id"]));
+                echo json_encode(delete_user($_POST["id"], "recruiter"));
+                break;
+            case "confirm_candidate":
+                echo json_encode(confirm_user($_POST["id"]));
+                break;
+            case "delete_candidate":
+                echo json_encode(delete_user($_POST["id"], "candidate"));
+                break;
+            case "nb_unconfirmed_users":
+                $users_model = new UsersModel;
+                $unconfirmed_users = $users_model->returnAllUnconfirmedUsers($_POST["role"]);
+                if(!$unconfirmed_users) {
+                    $response = [
+                        "status" => "empty"
+                    ];
+                } else {
+                    $response = [
+                        "status" => "not empty"
+                    ];
+                }
+                echo json_encode($response);
                 break;
         }
     }

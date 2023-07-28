@@ -127,7 +127,7 @@ class Model extends Db
     public function returnAllUnconfirmedUsers(string $role)
     {
         $this->db = Db::getInstance();
-        $stmt = $this->db->prepare("SELECT * FROM users INNER JOIN $role ON users.id = recruiter.user_id WHERE users.verified = 0");
+        $stmt = $this->db->prepare("SELECT * FROM users INNER JOIN $role ON users.id = " . $role .".id WHERE users.verified = 0");
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
