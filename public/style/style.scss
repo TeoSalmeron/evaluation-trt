@@ -634,7 +634,7 @@ $color5: #B45171;
 // CONSULTING
 .pannel__consulting {
     width: 100%;
-    padding: 90px 8vw;
+    padding: 90px clamp(15px, 8vw, 100px) 40px;
     font-family: $font3;
     color: $color4;
     text-align: center;
@@ -646,7 +646,6 @@ $color5: #B45171;
 
     h1, p {
         margin: 20px 0px;
-        color: $color5;
     }
 
     p {
@@ -665,7 +664,7 @@ $color5: #B45171;
         h2 {
             align-self: flex-start;
             text-align: center;
-            color: $color5;
+            text-decoration: underline;
         }
 
         h2, p, table {

@@ -526,7 +526,7 @@
 
 .pannel__consulting {
   width: 100%;
-  padding: 90px 8vw;
+  padding: 90px clamp(15px, 8vw, 100px) 40px;
   font-family: "Mulish", sans-serif;
   color: rgb(45, 171, 188);
   text-align: center;
@@ -538,7 +538,6 @@
 }
 .pannel__consulting h1, .pannel__consulting p {
   margin: 20px 0px;
-  color: #B45171;
 }
 .pannel__consulting p {
   color: #45413e;
@@ -555,7 +554,7 @@
 .pannel__consulting .consulting__section h2 {
   align-self: flex-start;
   text-align: center;
-  color: #B45171;
+  text-decoration: underline;
 }
 .pannel__consulting .consulting__section h2, .pannel__consulting .consulting__section p, .pannel__consulting .consulting__section table {
   margin-bottom: 20px;
