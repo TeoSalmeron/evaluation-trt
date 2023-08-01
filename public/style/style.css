@@ -292,6 +292,35 @@
   color: rgb(45, 171, 188);
 }
 
+.home__ads {
+  padding: 0px 8vw;
+  font-family: "Fire Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home__ads h2 {
+  margin: 20px 0px;
+  font-family: "Mulish", sans-serif;
+  color: rgb(45, 171, 188);
+}
+.home__ads .ad {
+  padding: 20px;
+  width: 100%;
+  border: 2px solid rgb(45, 171, 188);
+  border-radius: 20px;
+  margin: 20px 0px;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+}
+.home__ads .ad p {
+  margin: 10px 0px;
+}
+.home__ads .ad button {
+  align-self: center;
+}
+
 .inscription__main {
   width: 100%;
   max-width: 1000px;

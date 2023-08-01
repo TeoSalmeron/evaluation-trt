@@ -114,3 +114,31 @@ require_once ROOT . '/Views/templates/nav.php'
     </a>
 </section>
 <!-- END SECOND SECTION -->
+
+<!-- AD SECTIONS -->
+<section class="home__ads">
+    <h2>Nos dernières offres</h2>
+    <?php
+        foreach($ads as $a) {
+            ?>
+                <div class="ad">
+                    <h3>
+                        Intitulé du poste : <?= $a["title"] ?>
+                    </h3>
+                    <p>
+                        <b> Entreprise : </b> <?= $a["company_name"] ?>
+                    </p>
+                    <p>
+                        <b> Adresse : </b> <?= $a["location"] ?>
+                    </p>
+                    <p>
+                        <b> Description du poste : </b> <br> <br>
+                        <?= nl2br($a["description"]) ?>
+                    </p>
+                    <button value="<?=$a["a_id"]?>" class="btn_apply">Postuler</button>
+                </div>
+            <?php
+        }
+    ?>
+</section>
+<!-- END AD SECTIONS -->

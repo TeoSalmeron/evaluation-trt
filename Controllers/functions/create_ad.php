@@ -29,7 +29,7 @@ function create_ad() {
                 $ad_model = new AdvertisementModel;
                 $datas = [
                     "title" => htmlspecialchars(strip_tags(trim($_POST["title"]))),
-                    "address" => htmlspecialchars(strip_tags(trim($_POST["address"]))),
+                    "location" => htmlspecialchars(strip_tags(trim($_POST["address"]))),
                     "description" => htmlspecialchars(strip_tags(trim($_POST["description"]))),
                     "posted_by" => $_SESSION["id"]
                 ];

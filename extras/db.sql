@@ -33,7 +33,7 @@ CREATE TABLE administrator (
 CREATE TABLE advertisement (
     id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
-    address VARCHAR(100) NOT NULL,
+    location VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     posted_by VARCHAR(23) NOT NULL,
     verified_by VARCHAR(23) NULL,

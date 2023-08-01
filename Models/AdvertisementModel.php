@@ -8,7 +8,7 @@ class AdvertisementModel extends Model
 {
     private int $id;
     private string $title;
-    private string $address;
+    private string $location;
     private string $text;
     private string $posted_by;
     private string $verified_by;
@@ -61,9 +61,9 @@ class AdvertisementModel extends Model
     /**
      * Get the value of address
      */ 
-    public function getAddress()
+    public function getLocation()
     {
-        return $this->address;
+        return $this->location;
     }
 
     /**
@@ -71,9 +71,9 @@ class AdvertisementModel extends Model
      *
      * @return  self
      */ 
-    public function setAddress($address)
+    public function setLocation($location)
     {
-        $this->address = $address;
+        $this->location = $location;
 
         return $this;
     }
