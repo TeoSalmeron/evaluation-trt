@@ -132,4 +132,28 @@ class Model extends Db
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    /**
+     * Return all unconfirmed advertisements
+     */
+    public function returnAllUnconfirmedAds()
+    {
+        $this->db = Db::getInstance();
+        $stmt = $this->db->prepare("SELECT * FROM advertisement WHERE verified_by IS NULL");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    
+    /**
+     * Return company name depending on advertisement
+     */
+    public function returnCompanyName(string $id)
+    {
+        $this->db = Db::getInstance();
+        $stmt = $this->db->prepare("SELECT company_name FROM recruiter INNER JOIN advertisement ON recruiter.id = advertisement.posted_by WHERE recruiter.id = ?");
+        $stmt->execute([$id]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

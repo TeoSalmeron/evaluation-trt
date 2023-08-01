@@ -14,6 +14,40 @@
   display: flex;
   flex-direction: column;
 }
+.container input {
+  font-family: "Mulish", sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 1px solid #b9b9b9;
+  margin: 20px 0px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  color: #45413e;
+  width: 100%;
+}
+.container input:focus {
+  padding: 5px;
+  outline: #b9b9b9;
+  color: rgb(45, 171, 188);
+  border-bottom: 1px solid rgb(45, 171, 188);
+}
+.container button {
+  margin: 20px 0px;
+  width: 150px;
+  height: 40px;
+  font-family: "Mulish", sans-serif;
+  color: #fff;
+  background: rgb(45, 171, 188);
+  border: 3px solid rgb(45, 171, 188);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.container button:hover {
+  cursor: pointer;
+  background: #fff;
+  color: rgb(45, 171, 188);
+}
 
 .main_navigation_bar {
   height: 80px;
@@ -77,8 +111,10 @@
 }
 .main_navigation_bar .nav_list .close_nav {
   position: absolute;
+  width: 48px;
+  height: 48x;
   right: 15px;
-  top: 15px;
+  top: 0px;
   background: unset;
   border: none;
 }
@@ -528,7 +564,7 @@
 .pannel__consulting {
   min-height: 100vh;
   width: 100%;
-  padding: 90px 20px;
+  padding: 120px 20px;
   font-family: "Mulish", sans-serif;
   color: rgb(45, 171, 188);
   text-align: center;
@@ -549,13 +585,13 @@
   width: 100%;
   height: auto;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   text-align: justify;
 }
 .pannel__consulting .consulting__section h2 {
   font-size: clamp(20px, 4vw, 25px);
-  align-self: flex-start;
   text-align: center;
   text-decoration: underline;
   margin: 20px 0px;
@@ -585,6 +621,11 @@
 .pannel__consulting .consulting__section table td .btn_delete {
   background: url("/img/delete.png");
 }
+.pannel__consulting .consulting__section table td form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .pannel__consulting .consulting__section table td, .pannel__consulting .consulting__section table th {
   padding: 0.5rem;
 }
@@ -596,6 +637,62 @@
 }
 .pannel__consulting .consulting__section table tr:nth-of-type(2n) {
   background: #45413e;
+}
+.pannel__consulting .consulting__section .ad {
+  width: 100%;
+  max-width: 560px;
+  padding: 20px;
+  border: 1px solid rgb(45, 171, 188);
+  border-radius: 20px;
+  margin: 20px 0px;
+}
+.pannel__consulting .consulting__section .ad .btn_delete {
+  background: rgb(185, 0, 0) !important;
+  border: 3px solid rgb(185, 0, 0);
+}
+.pannel__consulting .consulting__section .ad .btn_delete:hover {
+  background: #fff !important;
+  color: rgb(185, 0, 0);
+}
+
+.pannel__recruiter {
+  padding: 120px clamp(15px, 7vw, 100px) 40px;
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Mulish", sans-serif;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+.pannel__recruiter h1 {
+  color: rgb(45, 171, 188);
+  margin-bottom: 20px;
+}
+.pannel__recruiter p {
+  margin: 20px 0px;
+  text-align: justify;
+}
+.pannel__recruiter .create__ad {
+  margin: 0px 0px 20px;
+}
+.pannel__recruiter .create__ad h2 {
+  margin: 20px 0px;
+}
+.pannel__recruiter .create__ad #formStatus {
+  display: none;
+}
+.pannel__recruiter .create__ad form {
+  display: flex;
+  flex-direction: column;
+}
+.pannel__recruiter .create__ad form textarea {
+  margin: 20px 0px;
+  font-family: "Mulish", sans-serif;
+  padding: 5px;
 }
 
 @media screen and (max-width: 650px) {

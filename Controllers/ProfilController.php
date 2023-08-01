@@ -6,6 +6,7 @@ use App\Models\UsersModel;
 use App\Models\CandidateModel;
 use App\Models\RecruiterModel;
 use App\Controllers\Controller;
+use App\Models\AdvertisementModel;
 
 class ProfilController extends Controller
 {
@@ -78,53 +79,70 @@ class ProfilController extends Controller
         } else {
             $recruiter_model = new RecruiterModel;
             $candidate_model = new CandidateModel;
+            $ad_model = new AdvertisementModel;
             $unconfirmed_recruiters = $recruiter_model->returnAllUnconfirmedUsers("recruiter");
             $unconfirmed_candidates = $candidate_model->returnAllUnconfirmedUsers("candidate");
+            $unconfirmed_advertisements = $ad_model->returnAllUnconfirmedAds();
 
             $this->render("consultant/consultant",
             [
                 "title" => "TRT - Panneau des consultants",
                 "unconfirmed_recruiters" => $unconfirmed_recruiters,
-                "unconfirmed_candidates" => $unconfirmed_candidates
+                "unconfirmed_candidates" => $unconfirmed_candidates,
+                "unconfirmed_advertisements" => $unconfirmed_advertisements,
+                "ad_model" => $ad_model
             ], [
                 "nav", "consulting"
             ]);
         }
     }
 
-    public function consultant_actions() {
-        require_once ROOT . '/Controllers/functions/confirm_user.php';
-        require_once ROOT . '/Controllers/functions/delete_user.php';
-
-
-        switch($_POST["action"]) {
-            case "confirm_recruiter":
-                echo json_encode(confirm_user($_POST["id"]));
-                break;
-            case "delete_recruiter":
-                echo json_encode(delete_user($_POST["id"], "recruiter"));
-                break;
-            case "confirm_candidate":
-                echo json_encode(confirm_user($_POST["id"]));
-                break;
-            case "delete_candidate":
-                echo json_encode(delete_user($_POST["id"], "candidate"));
-                break;
-            case "nb_unconfirmed_users":
-                $users_model = new UsersModel;
-                $unconfirmed_users = $users_model->returnAllUnconfirmedUsers($_POST["role"]);
-                if(!$unconfirmed_users) {
-                    $response = [
-                        "status" => "empty"
-                    ];
-                } else {
-                    $response = [
-                        "status" => "not empty"
-                    ];
-                }
-                echo json_encode($response);
-                break;
+    public function consultant_actions()
+    {
+        if($_SESSION["user_role"] !== "consulting") {
+            header("Location: /");
+            die();
+        } else {
+            require_once ROOT . '/Controllers/functions/confirm_user.php';
+            require_once ROOT . '/Controllers/functions/delete_user.php';
+            require_once ROOT . '/Controllers/functions/confirm_ad.php';
+            require_once ROOT . '/Controllers/functions/delete_ad.php';
+            switch($_POST["action"]) {
+                case "confirm_recruiter":
+                    echo json_encode(confirm_user($_POST["id"]));
+                    break;
+                case "delete_recruiter":
+                    echo json_encode(delete_user($_POST["id"], "recruiter"));
+                    break;
+                case "confirm_candidate":
+                    echo json_encode(confirm_user($_POST["id"]));
+                    break;
+                case "delete_candidate":
+                    echo json_encode(delete_user($_POST["id"], "candidate"));
+                    break;
+                case "nb_unconfirmed_users":
+                    $users_model = new UsersModel;
+                    $unconfirmed_users = $users_model->returnAllUnconfirmedUsers($_POST["role"]);
+                    if(!$unconfirmed_users) {
+                        $response = [
+                            "status" => "empty"
+                        ];
+                    } else {
+                        $response = [
+                            "status" => "not empty"
+                        ];
+                    }
+                    echo json_encode($response);
+                    break;
+                case "confirm_ad":
+                    echo json_encode(confirm_ad($_POST["id"]));
+                    break;
+                case "delete_ad":
+                    echo json_encode(delete_ad($_POST["id"]));
+                    break;
+            }
         }
+
     }
 
     public function employeur()
@@ -138,8 +156,20 @@ class ProfilController extends Controller
             [
                 "title" => "TRT - Mon profil"
             ],[
-                "nav"
+                "nav", "recruiter"
             ]);
+        }
+    }
+
+    public function employeur_actions()
+    {
+        if($_SESSION["user_role"] !== "recruiter") {
+            http_response_code(404);
+            echo "Accès refusé";
+            die();
+        } else {
+            require_once ROOT . '/Controllers/functions/create_ad.php';
+            echo json_encode(create_ad());
         }
     }
 

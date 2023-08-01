@@ -139,9 +139,43 @@ require_once ROOT . '/Views/templates/nav.php';
         </table>
     </section>
     <!-- END CANDIDATE SECTION -->
-    <section class="pannel__confirm_application">
-    </section>
-    <section class="pannel__confirm_advertisement">
 
+    <!-- CONFIRM ADVERTISEMENT -->
+    <section class="consulting__section">
+        <h2>
+            Confirmer les offres d'emploi
+        </h2>
+        <p>
+            Vous retrouverez dans cette section les dernières offres d'emploi envoyées par les employeurs.
+        </p>
+        <p id="adFormStatus">
+
+        </p>
+        <?php
+            foreach($unconfirmed_advertisements as $a) {
+                ?>
+                    <div class="ad" id="<?=$a["id"]?>">
+                        <p>
+                            <b>Titre de l'annonce</b> : <?= $a["title"] ?>
+                        </p>
+                        <p>
+                            <b>Adresse</b> : <?= $a["address"] ?>
+                        </p>
+                        <p>
+                            <b>Description</b> : <br><br>
+                            <?= nl2br($a["description"]) ?>
+                        </p>
+                        <form action="" method="post" class="ad_forms" id="<?=$a["id"]?>">
+                            <input type="checkbox" checked value="<?=$a["id"]?>" style="display:none">
+                            <button class="btn_confirm" value="confirm_ad">Confirmer</button>
+                            <button class="btn_delete" value="delete_ad">Supprimer</button>
+                        </form>
+                    </div>
+                <?php
+            }
+        ?>
+    </section>
+    <!-- END CONFIRM ADVERTISEMENT -->
+    <section class="pannel__confirm_application">
     </section>
 </main>

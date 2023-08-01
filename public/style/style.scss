@@ -27,6 +27,45 @@ $color5: #B45171;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+
+    input {
+        font-family: $font3;
+        // text-transform: uppercase;
+        font-size: 1.2rem;
+        border: none;
+        border-bottom: 1px solid $color2;
+        margin: 20px 0px;
+        transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+        color: $color1;
+        width: 100%;
+
+        &:focus {
+            padding: 5px;
+            outline: $color2;
+            color: $color4;
+            border-bottom: 1px solid $color4;
+        }
+    }
+
+    button {
+        margin: 20px 0px;
+        width: 150px;
+        height: 40px;
+        font-family: $font3;
+        color: #fff;
+        background: $color4;
+        border: 3px solid $color4;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+        
+        &:hover {
+            cursor: pointer;
+            background: #fff;
+            color: $color4;
+        }
+    }
 }
 // END GLOBAL CONTAINER
 
@@ -104,8 +143,10 @@ $color5: #B45171;
         
         .close_nav {
             position: absolute;
+            width: 48px;
+            height: 48x;
             right: 15px;
-            top: 15px;
+            top: 0px;
             background: unset;
             border: none;
 
@@ -136,6 +177,7 @@ $color5: #B45171;
                 display: none;
                 flex-direction: column;
                 padding: 10px 0px 10px 20px;
+                
                 li {
                     margin: 10px 0px;
                     a {
@@ -636,7 +678,7 @@ $color5: #B45171;
 .pannel__consulting {
     min-height: 100vh;
     width: 100%;
-    padding: 90px 20px;
+    padding: 120px 20px;
     font-family: $font3;
     color: $color4;
     text-align: center;
@@ -659,6 +701,7 @@ $color5: #B45171;
         width: 100%;
         height: auto;  
         display: flex;
+        align-items: center;
         flex-direction: column;
         justify-content: center;
         text-align: justify;
@@ -666,7 +709,6 @@ $color5: #B45171;
         
         h2 {
             font-size: clamp(20px, 4vw, 25px);
-            align-self: flex-start;
             text-align: center;
             text-decoration: underline;
             margin: 20px 0px;
@@ -684,7 +726,7 @@ $color5: #B45171;
             width: 100%;
 
             td {
-                
+
                 button {  
                     width: 45px;
                     height: 45px;
@@ -702,6 +744,12 @@ $color5: #B45171;
 
                 .btn_delete {
                     background: url("/img/delete.png");
+                }
+
+                form {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
 
@@ -723,9 +771,77 @@ $color5: #B45171;
 
         }
 
+        .ad {
+            width: 100%;
+            max-width: 560px;
+            padding: 20px;
+            border: 1px solid $color4;
+            border-radius: 20px;
+            margin: 20px 0px;
+
+            .btn_delete {
+                background: rgb(185, 0, 0) !important;
+                border: 3px solid rgb(185, 0, 0);
+
+                &:hover {
+                    background: #fff !important;
+                    color: rgb(185, 0, 0);
+                }
+            }
+        }
+
     }
 }
 // END CONSULTING
+
+// RECRUITER
+.pannel__recruiter {
+    padding: 120px clamp(15px, 7vw, 100px) 40px;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    font-family: $font3;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+
+    h1 {
+        color: $color4;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin: 20px 0px;
+        text-align: justify;
+    }
+
+    .create__ad {
+        margin: 0px 0px 20px;
+        h2 {
+            margin: 20px 0px;
+        }
+    
+        #formStatus {
+            display: none;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+    
+            
+            textarea {
+                margin: 20px 0px;
+                font-family: $font3;
+                padding: 5px;
+            }
+        }
+    }
+}
+// END RECRUITER
 
 @media screen and (max-width: 650px) {
     table {
