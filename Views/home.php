@@ -122,11 +122,11 @@ require_once ROOT . '/Views/templates/nav.php'
         foreach($ads as $a) {
             ?>
                 <div class="ad">
-                    <h3>
-                        Intitulé du poste : <?= $a["title"] ?>
-                    </h3>
                     <p>
-                        <b> Entreprise : </b> <?= $a["company_name"] ?>
+                        <b> Intitulé du poste : </b> <?= $a["title"] ?>
+                    </p>
+                    <p>
+                        <b> Entreprise : </b> <?= strtoupper($a["company_name"]) ?>
                     </p>
                     <p>
                         <b> Adresse : </b> <?= $a["location"] ?>
@@ -135,7 +135,13 @@ require_once ROOT . '/Views/templates/nav.php'
                         <b> Description du poste : </b> <br> <br>
                         <?= nl2br($a["description"]) ?>
                     </p>
-                    <button value="<?=$a["a_id"]?>" class="btn_apply">Postuler</button>
+                    <?php
+                        if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "candidate") {
+                            ?>
+                                <button value="<?=$a["a_id"]?>" class="btn_apply">Postuler</button>
+                            <?php
+                        }
+                    ?>
                 </div>
             <?php
         }

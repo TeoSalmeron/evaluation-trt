@@ -176,6 +176,37 @@ require_once ROOT . '/Views/templates/nav.php';
         ?>
     </section>
     <!-- END CONFIRM ADVERTISEMENT -->
-    <section class="pannel__confirm_application">
+    <section class="consulting__section">
+        <h2>
+            Confirmer les candidatures
+        </h2>
+        <p>
+            Vous retrouverez dans cette section les dernières candidatures.
+        </p>
+        <p id="applicationFormStatus">
+
+        </p>
+        <?php
+            foreach($unconfirmed_applications as $a) {
+                ?>
+                    <div class="application" id="<?=$a["advertisement_id"]?>">
+                        <p>
+                            De : <?= $a["email"] ?>
+                        </p>
+                        <p>
+                            Entreprise : <?= strtoupper($a["company_name"]) ?>
+                        </p>
+                        <p>
+                            Poste : <?= $a["title"] ?>
+                        </p>
+                        <form action="" method="post" class="application_forms" id="<?=$a["advertisement_id"]?>">
+                            <input type="checkbox" checked value="<?=$a["application_id"]?>" style="display:none">
+                            <button class="btn_confirm" value="confirm_application">Confirmer</button>
+                            <button class="btn_delete" value="delete_application">Supprimer</button>
+                        </form>
+                    </div>
+                <?php
+            }
+        ?>
     </section>
 </main>

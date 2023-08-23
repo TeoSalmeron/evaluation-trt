@@ -157,4 +157,15 @@ class Model extends Db
         return $result;
     }
     
+    /**
+     * Return all applications
+     */
+    public function returnAllApplications()
+    {
+        $this->db = Db::getInstance();
+        $stmt = $this->db->prepare("SELECT advertisement.title AS title, advertisement.id AS advertisement_id, advertisement.location AS advertisement_location, users.email AS email, recruiter.company_name AS company_name, application.id AS application_id FROM application INNER JOIN candidate ON application.candidate_id = candidate.id INNER JOIN users ON application.candidate_id = users.id INNER JOIN advertisement ON application.advertisement_id = application.id INNER JOIN recruiter ON advertisement.posted_by = recruiter.id WHERE application.verified_by IS NULL");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

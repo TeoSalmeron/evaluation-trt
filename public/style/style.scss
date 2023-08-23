@@ -367,19 +367,35 @@ $color5: #B45171;
     }
     
     .ad {
-        padding: 20px;
+        height: 400px;
+        overflow-y: scroll;
+        padding: 40px 30px;
         width: 100%;
-        border: 2px solid $color4;
-        border-radius: 20px;
+        border: 3px solid $color4;
+        // border-radius: 20px;
         margin: 20px 0px;
         max-width: 560px;
         display: flex;
         flex-direction: column;
+        
+        b {
+            color: $color4;
+        }
+        h3 {
+            color: $color1;
+        }
         p {
             margin: 10px 0px;
+            font-family: $font3;
+
         }
 
         button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;  
             align-self: center;
         }
     }
@@ -724,6 +740,10 @@ $color5: #B45171;
     transform: translateX(-50%);
     z-index: 1;
     // margin: auto;
+
+    h1 {
+        margin: 20px 0px;   
+    }
 
     p {
         color: $color1;

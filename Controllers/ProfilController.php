@@ -7,6 +7,7 @@ use App\Models\CandidateModel;
 use App\Models\RecruiterModel;
 use App\Controllers\Controller;
 use App\Models\AdvertisementModel;
+use App\Models\ApplicationModel;
 
 class ProfilController extends Controller
 {
@@ -80,17 +81,20 @@ class ProfilController extends Controller
             $recruiter_model = new RecruiterModel;
             $candidate_model = new CandidateModel;
             $ad_model = new AdvertisementModel;
+            $application_model = new ApplicationModel;
+
             $unconfirmed_recruiters = $recruiter_model->returnAllUnconfirmedUsers("recruiter");
             $unconfirmed_candidates = $candidate_model->returnAllUnconfirmedUsers("candidate");
             $unconfirmed_advertisements = $ad_model->returnAllUnconfirmedAds();
-
+            $unconfirmed_applications = $application_model->returnAllApplications();
+            
             $this->render("consultant/consultant",
             [
                 "title" => "TRT - Panneau des consultants",
                 "unconfirmed_recruiters" => $unconfirmed_recruiters,
                 "unconfirmed_candidates" => $unconfirmed_candidates,
                 "unconfirmed_advertisements" => $unconfirmed_advertisements,
-                "ad_model" => $ad_model
+                "unconfirmed_applications" => $unconfirmed_applications
             ], [
                 "nav", "consulting"
             ]);
@@ -107,6 +111,9 @@ class ProfilController extends Controller
             require_once ROOT . '/Controllers/functions/delete_user.php';
             require_once ROOT . '/Controllers/functions/confirm_ad.php';
             require_once ROOT . '/Controllers/functions/delete_ad.php';
+            require_once ROOT . '/Controllers/functions/confirm_application.php';
+            require_once ROOT . '/Controllers/functions/delete_application.php';
+
             switch($_POST["action"]) {
                 case "confirm_recruiter":
                     echo json_encode(confirm_user($_POST["id"]));
@@ -139,6 +146,12 @@ class ProfilController extends Controller
                     break;
                 case "delete_ad":
                     echo json_encode(delete_ad($_POST["id"]));
+                    break;
+                case "confirm_application":
+                    echo json_encode(confirm_application($_POST["id"]));
+                    break;
+                case "delete_application":
+                    echo json_encode(delete_application($_POST["id"]));
                     break;
             }
         }

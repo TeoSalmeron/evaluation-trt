@@ -55,6 +55,9 @@ require_once ROOT . '/Views/templates/nav.php';
         <button type="submit">
             Valider
         </button>
+        <button type="reset">
+            Réinitialiser
+        </button>
     </form>
     <!-- END CANDIDATE FORM -->
 
