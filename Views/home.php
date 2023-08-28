@@ -116,35 +116,41 @@ require_once ROOT . '/Views/templates/nav.php'
 <!-- END SECOND SECTION -->
 
 <!-- AD SECTIONS -->
-<section class="home__ads">
-    <h2>Nos dernières offres</h2>
-    <?php
-        foreach($ads as $a) {
-            ?>
-                <div class="ad">
-                    <p>
-                        <b> Intitulé du poste : </b> <?= $a["title"] ?>
-                    </p>
-                    <p>
-                        <b> Entreprise : </b> <?= strtoupper($a["company_name"]) ?>
-                    </p>
-                    <p>
-                        <b> Adresse : </b> <?= $a["location"] ?>
-                    </p>
-                    <p>
-                        <b> Description du poste : </b> <br> <br>
-                        <?= nl2br($a["description"]) ?>
-                    </p>
-                    <?php
-                        if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "candidate") {
-                            ?>
-                                <button value="<?=$a["a_id"]?>" class="btn_apply">Postuler</button>
-                            <?php
-                        }
-                    ?>
-                </div>
-            <?php
-        }
-    ?>
-</section>
+<?php
+    if(!empty($ads) && isset($ads)) {
+        ?>
+            <section class="home__ads">
+                <h2>Nos dernières offres</h2>
+                <?php
+                    foreach($ads as $a) {
+                        ?>
+                            <div class="ad">
+                                <p>
+                                    <b> Intitulé du poste : </b> <?= $a["title"] ?>
+                                </p>
+                                <p>
+                                    <b> Entreprise : </b> <?= strtoupper($a["company_name"]) ?>
+                                </p>
+                                <p>
+                                    <b> Adresse : </b> <?= $a["location"] ?>
+                                </p>
+                                <p>
+                                    <b> Description du poste : </b> <br> <br>
+                                    <?= nl2br($a["description"]) ?>
+                                </p>
+                                <?php
+                                    if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "candidate") {
+                                        ?>
+                                            <button value="<?=$a["a_id"]?>" class="btn_apply">Postuler</button>
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+                        <?php
+                    }
+                ?>
+            </section>
+        <?php
+    }
+?>
 <!-- END AD SECTIONS -->

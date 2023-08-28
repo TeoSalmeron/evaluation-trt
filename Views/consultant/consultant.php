@@ -159,10 +159,10 @@ require_once ROOT . '/Views/templates/nav.php';
                             <b>Titre de l'annonce</b> : <?= $a["title"] ?>
                         </p>
                         <p>
-                            <b>Adresse</b> : <?= $a["address"] ?>
+                            <b>Adresse</b> : <?= $a["location"] ?>
                         </p>
                         <p>
-                            <b>Description</b> : <br><br>
+                            <b>Description</b> : <br>
                             <?= nl2br($a["description"]) ?>
                         </p>
                         <form action="" method="post" class="ad_forms" id="<?=$a["id"]?>">

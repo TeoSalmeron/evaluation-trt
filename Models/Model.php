@@ -168,4 +168,16 @@ class Model extends Db
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    /**
+     * Return users informations for mailing
+     */
+    public function getRecruiterMail(int $ad_id)
+    {
+        $this->db = Db::getInstance();
+        $stmt = $this->db->prepare("SELECT email AS mail_to FROM users INNER JOIN advertisement ON users.id = advertisement.posted_by WHERE advertisement.id = ?");
+        $stmt->execute([$ad_id]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

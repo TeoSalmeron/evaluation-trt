@@ -66,6 +66,40 @@ $color5: #B45171;
             color: $color4;
         }
     }
+
+    .ad {
+        height: 400px;
+        overflow-y: scroll;
+        padding: 30px;
+        width: 100%;
+        border: 3px solid $color4;
+        // border-radius: 20px;
+        margin: 20px 0px;
+        max-width: 560px;
+        display: flex;
+        flex-direction: column;
+        
+        b {
+            color: $color4;
+        }
+        h3 {
+            color: $color1;
+        }
+        p {
+            margin: 10px 0px;
+            font-family: $font3;
+
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;  
+            align-self: center;
+        }
+    }
 }
 // END GLOBAL CONTAINER
 
@@ -827,21 +861,20 @@ $color5: #B45171;
             width: 100%;
             max-width: 560px;
             padding: 20px;
-            border: 1px solid $color4;
-            border-radius: 20px;
+            border: 2px solid $color4;
             margin: 20px 0px;
-
+            font-family: $font1;
+    
             .btn_delete {
                 background: rgb(185, 0, 0) !important;
                 border: 3px solid rgb(185, 0, 0);
-
+    
                 &:hover {
                     background: #fff !important;
                     color: rgb(185, 0, 0);
                 }
             }
         }
-
     }
 }
 // END CONSULTING
@@ -894,6 +927,15 @@ $color5: #B45171;
     }
 }
 // END RECRUITER
+
+// OFFERS
+.offres__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 110px 6vw;
+}
+// END OFFERS
 
 @media screen and (max-width: 650px) {
     table {
