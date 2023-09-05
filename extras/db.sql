@@ -51,5 +51,5 @@ CREATE TABLE application (
     FOREIGN KEY (verified_by) REFERENCES consulting(id)
 );
 
-INSERT INTO users VALUES("64b43fd47919e4.04829579", "teo.salmeron2601@gmail.com", "$2y$10$XeC4/KUyf4btlk1YxWRxKeqfUGXNZp2jvV6MszazHpFvTw/wHWtcy", TRUE);
+INSERT INTO users VALUES("64b43fd47919e4.04829579", "administrateur@trt.fr", "$2y$10$6GDyn3FFbv0reE1vxRV2seZP3DNjFat2LZHKPf2BMF8DeA48dSgam", TRUE);
 INSERT INTO administrator VALUES("64b43fd47919e4.04829579");
